@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "94693b54-36b9-4234-8be6-e07bf94efe0f",
+		"name": "Android Panel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12323537"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Registration",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\" : \"admin@yopmail.com\",\n    \"password\": \"Admin@123\",\n    \"firstName\" : \"test\",\n    \"lastName\" : \"test\",\n    \"displayName\" : \"Admin\",\n    \"dob\" : \"18/06/1997\",\n    \"privacy\": \"true\",\n    \"deviceToken\" : \"sa64asdf64as56f\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{admin_url}}auth/register",
+									"host": [
+										"{{admin_url}}auth"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\" : \"admin@yopmail.com\",\n    \"password\": \"Admin@123\",\n    \"deviceToken\" : \"sa64asdf64as56f\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{admin_url}}auth/login",
+									"host": [
+										"{{admin_url}}auth"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "verify admin",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{admin_url}}profile/verify",
+									"host": [
+										"{{admin_url}}profile"
+									],
+									"path": [
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"currentPassword\" : \"Admin123\",\n    \"password\" : \"Admin@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{admin_url}}profile/change-password",
+									"host": [
+										"{{admin_url}}profile"
+									],
+									"path": [
+										"change-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"test\",\n    \"lastName\": \"test\",\n    \"email\": \"test@gmail.com\",\n    \"displayName\": \"Admin\",\n    \"dob\": \"18/06/2001\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{admin_url}}profile/update",
+									"host": [
+										"{{admin_url}}profile"
+									],
+									"path": [
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "v1",
+			"item": [
+				{
+					"name": "Application",
+					"item": [
+						{
+							"name": "list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}product/list?seach=po",
+									"host": [
+										"{{base_url}}product"
+									],
+									"path": [
+										"list"
+									],
+									"query": [
+										{
+											"key": "seach",
+											"value": "po"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000/api/v1/"
+		},
+		{
+			"key": "jwt",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjczOWIxNTA0ZjZmZmUwN2FkMDlmM2IiLCJpYXQiOjE2NTUzNzY2NDMsImV4cCI6MTY1NTk3NjU4M30._ohbhUp627CiO9AvFPDnCDJb9dGP59_eUonBF1WGOdA"
+		},
+		{
+			"key": "admin_url",
+			"value": "http://localhost:3000/api/admin/"
+		}
+	]
+}

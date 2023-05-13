@@ -21,4 +21,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 {"msg":"server working fine"}
 ````
 
-## I have attached the postman collection# AdminPanel
+## I have attached the postman collection
